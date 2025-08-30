@@ -6,6 +6,8 @@ import tui.widgets.*
 import tui.crossterm.CrosstermJni
 import tui.crossterm.KeyModifiers
 import java.util.UUID
+import tui.widgets.ParagraphWidget.Wrap
+import util.chaining.*
 
 @main def app: Unit = {
   var selected = 0
@@ -26,38 +28,83 @@ import java.util.UUID
   val choice = util.boundary[Option[String]] {
     withTerminal { (jni, terminal) =>
       while (true) {
-        terminal.draw { f =>
-          val block = BlockWidget(
-            title = Some(Spans(Array(Span("select your poison", Style.DEFAULT)))),
-            borders = Borders.ALL,
-          )
+        val item = items(selected)
 
-          val list = ListWidget(
-            block = Some(block),
-            items =
-              items
-                .map(i =>
-                  ListWidget.Item(
-                    content = Text(
-                      Array(
-                        Spans(
-                          Array(Span(i, Style.DEFAULT))
+        terminal.draw { f =>
+          Layout(
+            direction = Direction.Horizontal,
+            constraints = Array(Constraint.Percentage(30), Constraint.Percentage(50)),
+          ).split(f.size).tap { columns =>
+            val list = ListWidget(
+              block = Some(
+                BlockWidget(
+                  title = Some(Spans(Array(Span("select your poison", Style.DEFAULT)))),
+                  borders = Borders.ALL,
+                )
+              ),
+              items =
+                items
+                  .map(i =>
+                    ListWidget.Item(
+                      content = Text(
+                        Array(
+                          Spans(
+                            Array(Span(i, Style.DEFAULT))
+                          )
                         )
                       )
                     )
                   )
-                )
-                .toArray,
-            style = Style.DEFAULT,
-            startCorner = Corner.TopLeft,
-            highlightStyle = Style.DEFAULT.fg(Color.Red),
-            highlightSymbol = Some("> "),
-          )
+                  .toArray,
+              style = Style.DEFAULT,
+              startCorner = Corner.TopLeft,
+              highlightStyle = Style.DEFAULT.fg(Color.Red),
+              highlightSymbol = Some("> "),
+            )
 
-          f.renderStatefulWidget(
-            list,
-            terminal.viewport.area,
-          )(ListWidget.State(offset = 0, selected = Some(selected)))
+            f.renderStatefulWidget(
+              list,
+              columns(0),
+            )(ListWidget.State(offset = 0, selected = Some(selected)))
+
+            Layout(
+              direction = Direction.Vertical,
+              constraints = Array(Constraint.Length(1), Constraint.Min(1)),
+              margin = Margin(1),
+            ).split(columns(1)).pipe { rhsRows =>
+              f.renderWidget(
+                BlockWidget(
+                  title = Some(Spans(Array(Span("details", Style.DEFAULT)))),
+                  borders = Borders.ALL,
+                  borderStyle = Style.DEFAULT.fg(Color.Green),
+                ),
+                columns(1),
+              )
+
+              val header = ParagraphWidget(
+                text = Text(
+                  Array(
+                    Spans(Array(Span(s"see all the details about ${item} here", Style.DEFAULT)))
+                  )
+                )
+              )
+
+              val deets = ParagraphWidget(
+                text = Text.nostyle(
+                  s"oh yes this is the details! Let me tell you the full story of lorem ipsum, friends, adventure and betrayal.\n\nmaybe even some more things too."
+                ),
+                wrap = Some(Wrap(trim = false)),
+              )
+
+              f.renderWidget(header, rhsRows(0))
+
+              f.renderWidget(
+                deets,
+                rhsRows(1).inner(Margin(1, 0)),
+              )
+
+            }
+          }
         }
 
         jni.read() match {
