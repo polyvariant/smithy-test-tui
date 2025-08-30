@@ -5,6 +5,7 @@ import tui.*
 import tui.widgets.*
 import tui.crossterm.CrosstermJni
 import tui.crossterm.KeyModifiers
+import java.util.UUID
 
 @main def app: Unit = {
   var selected = 0
@@ -21,6 +22,7 @@ import tui.crossterm.KeyModifiers
     "beer",
     "taxes",
   )
+
   val choice = util.boundary[Option[String]] {
     withTerminal { (jni, terminal) =>
       while (true) {
@@ -65,6 +67,8 @@ import tui.crossterm.KeyModifiers
                   if char.c() == 'q' || (char
                     .c() == 'c' && (key.keyEvent().modifiers().bits() == KeyModifiers.CONTROL)) =>
                 util.boundary.break(None)
+              case char: tui.crossterm.KeyCode.Char if char.c() == 'n' =>
+                items :+= s"NEW ITEM! ${UUID.randomUUID()}"
               case char: tui.crossterm.KeyCode.Up =>
                 selected = (selected - 1).clamped(items.indices)
               case char: tui.crossterm.KeyCode.Down =>
