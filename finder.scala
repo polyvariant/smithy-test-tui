@@ -19,6 +19,7 @@ import software.amazon.smithy.model.node.StringNode
 
 object finder {
 
+  // Note: remember this function is cached
   def findTestTraits(m: Model): List[TestCase] = {
     m
       .getShapesWithTrait(classOf[HttpRequestTestsTrait])
@@ -38,7 +39,7 @@ object finder {
             TestCase.make("response", s.getId, t)
           }
         }
-  }.sortBy(tc => (tc.tpe, tc.id))
+  }.sortBy(tc => (tc.protocol, tc.tpe, tc.id))
 
 }
 

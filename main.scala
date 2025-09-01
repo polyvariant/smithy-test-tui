@@ -28,6 +28,9 @@ import upickle.default.*
 import software.amazon.smithy.protocoltests.traits.HttpRequestTestsTrait
 import software.amazon.smithy.model.node.Node
 import software.amazon.smithy.model.node.StringNode
+import software.amazon.smithy.model.node.ArrayNode
+import software.amazon.smithy.model.node.ObjectNode
+import software.amazon.smithy.model.shapes.ShapeId
 
 case class MavenConfig(
   dependencies: List[String] = Nil
@@ -55,6 +58,8 @@ enum State {
 
 object State {
 
+  private val pageSize = 20
+
   extension (loaded: Loaded) {
     def next: Loaded = loaded.copy(selected = (loaded.selected + 1) % loaded.items.size)
 
@@ -63,10 +68,10 @@ object State {
     )
 
     def pageUp: Loaded = loaded.copy(selected =
-      (loaded.selected - 10 + loaded.items.size) % loaded.items.size
+      (loaded.selected - pageSize + loaded.items.size) % loaded.items.size
     )
 
-    def pageDown: Loaded = loaded.copy(selected = (loaded.selected + 10) % loaded.items.size)
+    def pageDown: Loaded = loaded.copy(selected = (loaded.selected + pageSize) % loaded.items.size)
 
   }
 
@@ -74,9 +79,21 @@ object State {
 
 def renderLoaded(state: State.Loaded, f: Frame) = Layout(
   direction = Direction.Horizontal,
-  constraints = Array(Constraint.Percentage(50), Constraint.Percentage(50)),
+  constraints = Array(Constraint.Percentage(40), Constraint.Percentage(60)),
 ).split(f.size).tap { columns =>
   val item = state.items(state.selected)
+
+  val protocols = state.items.view.map(_.protocol).toSet
+  val protocolsUniqueByName =
+    protocols.groupBy(_.getName).filter(_._2.size == 1).map(_._2.head).toSet
+
+  def showProtocol(protocol: ShapeId) =
+    if (protocolsUniqueByName.contains(protocol))
+      protocol.getName
+    else
+      protocol.toString
+
+  val protocolsWidth = protocols.view.map(showProtocol(_).length).max
 
   val casesTable = TableWidget(
     block = Some(
@@ -88,13 +105,18 @@ def renderLoaded(state: State.Loaded, f: Frame) = Layout(
         borderStyle = Style.DEFAULT.fg(Color.Magenta),
       )
     ),
-    widths = Array(Constraint.Min(8), Constraint.Percentage(80)),
+    widths = Array(
+      Constraint.Min(protocolsWidth),
+      Constraint.Min(List("request", "response").map(_.length).max),
+      Constraint.Percentage(80),
+    ),
     header = Some(
       TableWidget.Row(
         cells = Array(
+          TableWidget.Cell(Text.nostyle("protocol")),
           TableWidget.Cell(Text.nostyle("kind")),
           TableWidget.Cell(Text.nostyle("id")),
-        )
+        ).map(_.copy(style = Style.DEFAULT.fg(Color.Magenta).addModifier(Modifier.BOLD)))
       )
     ),
     rows =
@@ -103,6 +125,7 @@ def renderLoaded(state: State.Loaded, f: Frame) = Layout(
         .map { i =>
           TableWidget.Row(
             cells = Array(
+              TableWidget.Cell(Text.nostyle(showProtocol(i.protocol))),
               TableWidget.Cell(Text.nostyle(i.tpe)),
               TableWidget.Cell(Text.nostyle(i.id)),
             )
@@ -118,14 +141,16 @@ def renderLoaded(state: State.Loaded, f: Frame) = Layout(
     columns(0),
   )(TableWidget.State(offset = 0, selected = Some(state.selected)))
 
-  val maxKeyLen = item.keys.keys.map(_.length).maxOption.getOrElse(0)
+  val maxKeyLen = item.keys.keys.map(_.length).maxOption.getOrElse(0) max "protocol".length
+
+  val deetsKeyStyle = Style.DEFAULT.fg(Color.Green).addModifier(Modifier.BOLD)
 
   val deets = TableWidget(
     block = Some(
       BlockWidget(
-        title = Some(Spans.nostyle("details")),
+        title = Some(Spans.nostyle("Test case details")),
         borders = Borders.ALL,
-        borderStyle = Style.DEFAULT.fg(Color.Green),
+        borderStyle = Style.DEFAULT.fg(Color.Green).addModifier(Modifier.BOLD),
       )
     ),
     widths = Array(Constraint.Length(maxKeyLen), Constraint.Percentage(80)),
@@ -142,17 +167,24 @@ def renderLoaded(state: State.Loaded, f: Frame) = Layout(
           .keys
           .map { (k, v) =>
             TableWidget.Row(
+              height = 1,
               cells = Array(
                 TableWidget.Cell(Text.nostyle(k)),
                 TableWidget.Cell(Text.nostyle {
                   v match {
-                    case s: StringNode => s.getValue()
-                    case _             => Node.printJson(v)
+                    case _: ObjectNode | _: ArrayNode => Node.printJson(v)
+                    // flat nodes usually have better tostrings
+                    case _ => v.toString
                   }
                 }),
-              )
+              ),
             )
           }
+    }.map { row =>
+      row.copy(cells = row.cells.zipWithIndex.map {
+        case (cell, 0) => cell.copy(style = deetsKeyStyle)
+        case (cell, _) => cell
+      })
     }.toArray,
   )
 
@@ -271,6 +303,14 @@ def cached[I: ReadWriter, E, O: ReadWriter](cacheFile: os.Path)(load: I => Eithe
       computeAndWrite
   }
 
+def timed[A](tag: String)(a: => A): A = {
+  val (time, v) = ox.timed(a)
+  log(
+    s"${Console.CYAN}timed[${tag}] = ${time.toMillis} millis${Console.RESET}"
+  )
+  v
+}
+
 @main def app: Unit = {
   val channel = ox.channels.Channel.bufferedDefault[Event]
 
@@ -292,11 +332,12 @@ def cached[I: ReadWriter, E, O: ReadWriter](cacheFile: os.Path)(load: I => Eithe
             state match {
               case State.Loading =>
                 ox.fork {
-                  val build = read[BuildConfig](os.read(os.pwd / "smithy-build.json"))
-                  log(s"parsed build: $build")
+                  val build =
+                    timed("read build")(read[BuildConfig](os.read(os.pwd / "smithy-build.json")))
 
                   val result = cached(os.pwd / ".smithy-testcase-viewer" / "cache.json")(loadBuild)
                     .apply(build)
+
                   val event = result.fold(
                     Event.Failed(_),
                     Event.Loaded(_),
@@ -326,7 +367,7 @@ def cached[I: ReadWriter, E, O: ReadWriter](cacheFile: os.Path)(load: I => Eithe
                   ),
                   f.size,
                 )
-              case state: State.Loaded => renderLoaded(state, f)
+              case state: State.Loaded => timed("renderLoaded")(renderLoaded(state, f))
             }
           }
         }
