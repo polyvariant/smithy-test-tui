@@ -1,0 +1,44 @@
+name: CI
+on:
+  push:
+    branches: ["main"]
+    tags: ["v*"]
+  pull_request:
+    branches: ["*"]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
+    name: Publish to Maven Central
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - uses: coursier/cache-action@v6
+
+      - uses: VirtusLab/scala-cli-setup@main
+        with:
+          power: true
+
+      - name: Publish
+        run: |
+          scala-cli config publish.credentials oss.sonatype.org env:SONATYPE_USERNAME env:SONATYPE_PASSWORD
+          ./.github/workflows/import-gpg.sh
+          scala-cli publish . --signer gpg --gpg-key DB33C5B9DA1A245B
+        env:
+          PGP_PASSPHRASE: ""
+          PGP_SECRET: ${{ secrets.PGP_SECRET }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}

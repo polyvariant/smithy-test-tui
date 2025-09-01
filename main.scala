@@ -7,6 +7,17 @@
 //> using dep "com.lihaoyi::os-lib:0.11.5"
 //> using scala 3.7.3-RC2
 //> using options -no-indent
+
+//> using publish.computeVersion git:tag
+//> using publish.developers "kubukoz|Jakub Kozłowski|https://github.com/kubukoz"
+//> using publish.license Apache-2.0
+//> using publish.name smithy-test-tui
+//> using publish.organization org.polyvariant
+//> using publish.repository central
+//> using publish.secretKey env:PGP_SECRET
+//> using publish.secretKeyPassword env:PGP_PASSPHRASE
+//> using publish.url https://github.com/polyvariant/smithy-test-tui
+//> using publish.vcs github:polyvariant/smithy-test-tui
 import tui.*
 import tui.widgets.*
 import tui.crossterm.CrosstermJni
