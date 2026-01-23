@@ -49,30 +49,7 @@ object ModelLoader {
 
   private def loadModelsFromJar(
     file: File
-  ): List[URL] =
-    Using.resource(
-      // Note: On JDK13+, the second parameter is redundant.
-      FileSystems.newFileSystem(file.toPath(), null: ClassLoader)
-    ) { jarFS =>
-      val manifestPath = jarFS.getPath("META-INF", "smithy", "manifest")
-
-      // model discovery would throw if we tried to pass a non-existent path
-      if (!Files.exists(manifestPath))
-        Nil
-      else {
-        try ModelDiscovery.findModels(manifestPath.toUri().toURL()).asScala.toList
-        catch {
-          case e: ModelManifestException =>
-            System
-              .err
-              .println(
-                s"Unexpected exception while loading model from $file, skipping: $e"
-              )
-
-            Nil
-        }
-      }
-    }
+  ): List[URL] = ModelDiscovery.findModels(file.toURI().toURL()).asScala.toList
 
   private def addFileImports(
     imports: Iterable[File]
