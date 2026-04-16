@@ -1,10 +1,10 @@
-//> using dep com.olvind.tui::tui:0.0.7
-//> using dep com.softwaremill.ox::core:1.0.2
-//> using dep software.amazon.smithy:smithy-model:1.66.0
-//> using dep software.amazon.smithy:smithy-protocol-test-traits:1.66.0
+//> using dep com.olvind.tui::tui:0.0.10
+//> using dep com.softwaremill.ox::core:1.0.4
+//> using dep software.amazon.smithy:smithy-model:1.69.0
+//> using dep software.amazon.smithy:smithy-protocol-test-traits:1.69.0
 //> using dep io.get-coursier:interface:1.0.28
-//> using dep "com.lihaoyi::upickle:4.4.2"
-//> using dep "com.lihaoyi::os-lib:0.11.6"
+//> using dep "com.lihaoyi::upickle:4.4.3"
+//> using dep "com.lihaoyi::os-lib:0.11.8"
 //> using scala 3.8.1
 //> using options -no-indent
 

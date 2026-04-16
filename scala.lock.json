@@ -2,7 +2,7 @@
   "version": 2,
   "scalaVersion": "3.8.1",
   "mainClass": "app",
-  "exportHash": "4f637cb810eae68fa63fa27aa3f5b47795f07b88",
+  "exportHash": "378df030bbaed74e269a0d8bf454c41ce68914f7",
   "sources": [
     "finder.scala",
     "loader.scala",
@@ -84,36 +84,36 @@
       "sha256": "84cQhYrpgT+Sa3/EzSf2SIWgHQDC891DMdUt4J4PSGE="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-lib_3/0.11.6/os-lib_3-0.11.6.jar",
-      "sha256": "am0IjNaxvW2sptiKnASFwKPRe01NXoMZZO90Vp7wzlQ="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-lib_3/0.11.8/os-lib_3-0.11.8.jar",
+      "sha256": "Nb0a3AtRaeg3s8SMNz/7RArIRJXbGZfaLz4B58G1qd8="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-lib_3/0.11.6/os-lib_3-0.11.6.pom",
-      "sha256": "5wlPf7hy+W5uW0QSX+oyxi2/lWj5H/MSMDVkvXE4m1c="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-lib_3/0.11.8/os-lib_3-0.11.8.pom",
+      "sha256": "gMQnDdkIOhgI+GF14E9tf9DNlHGksRHXMxJf2hz1UVQ="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle_3/4.4.2/upickle_3-4.4.2.jar",
-      "sha256": "ZVHj1Sdwr3hOYDTGfe8ukgGVyAFvhVOOHzm/wZvcaXU="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle_3/4.4.3/upickle_3-4.4.3.jar",
+      "sha256": "9oAStM32RobBAbHIT/R+eaz4kuDtULzsUdAsKAcII1E="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle_3/4.4.2/upickle_3-4.4.2.pom",
-      "sha256": "zEB2HscPZdtp0Jbg2qA/ScxZ9nJNZsv4zLkwvdH3qSY="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle_3/4.4.3/upickle_3-4.4.3.pom",
+      "sha256": "Pma85rQ9WjITW3gfDXEunMYa6z56w2ixi7BrGFpR29c="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/tui_3/0.0.7/tui_3-0.0.7.jar",
-      "sha256": "/FWueCfeyENwIIRG0u77sDkEYdzwM75k51qxXRVEpq8="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/tui_3/0.0.10/tui_3-0.0.10.jar",
+      "sha256": "cj/Lo8/KdWdySiIsDg04CeTEOpQBfLwyQvyGqmnAkcc="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/tui_3/0.0.7/tui_3-0.0.7.pom",
-      "sha256": "QIod6y5od6LGeFiV3BfkEd1PnvkOzH27YF7MECfVZUQ="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/tui_3/0.0.10/tui_3-0.0.10.pom",
+      "sha256": "UKOhgrwI5bBRP/A+MRsKygDhQgH8SueK7ZQDiGsHPrQ="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/softwaremill/ox/core_3/1.0.2/core_3-1.0.2.jar",
-      "sha256": "AWNBNu/0oBbybyTy1xZg76RNt+/2v8SYXpJlCXUjzgU="
+      "url": "https://repo1.maven.org/maven2/com/softwaremill/ox/core_3/1.0.4/core_3-1.0.4.jar",
+      "sha256": "viGdZ9xrhvjzxglQZBfOlF39YjP8QQ1hH1zeljjQzec="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/softwaremill/ox/core_3/1.0.2/core_3-1.0.2.pom",
-      "sha256": "pqPwAFGyTtdxurmoQOdgrW1DHirzH10usGN7X1EJEYY="
+      "url": "https://repo1.maven.org/maven2/com/softwaremill/ox/core_3/1.0.4/core_3-1.0.4.pom",
+      "sha256": "wNME5J2rWxHtxLQvPyx+jh25s5LyB4sxhxDRPm7Lt0U="
     },
     {
       "url": "https://repo1.maven.org/maven2/io/get-coursier/interface/1.0.28/interface-1.0.28.jar",
@@ -124,20 +124,20 @@
       "sha256": "HToQ+bwXKLgi0zGXVUUSBJHiaEDerq6Dfallak4SvN0="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-model/1.66.0/smithy-model-1.66.0.jar",
-      "sha256": "lXqqdrbwCmTwMKjqWQas/fFqbz6CqNM5locm/GXtLpE="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-model/1.69.0/smithy-model-1.69.0.jar",
+      "sha256": "0zkcI6O5/xINXJDf3f977OjrO54fhJQ/PQzCS5CF2+k="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-model/1.66.0/smithy-model-1.66.0.pom",
-      "sha256": "WdJaFbzZ31cM3E5l9O7swKeE7dFsqq7uajTyQwirE/c="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-model/1.69.0/smithy-model-1.69.0.pom",
+      "sha256": "qHAMN43m36IxPMg59YTJyRMRtER+Mbxdmz8HtkvGRbk="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-protocol-test-traits/1.66.0/smithy-protocol-test-traits-1.66.0.jar",
-      "sha256": "xISRIhDot4EXrlQFgnwcSoKVs62V5LkF1IivtYoPiMM="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-protocol-test-traits/1.69.0/smithy-protocol-test-traits-1.69.0.jar",
+      "sha256": "zb5K6Yo23K75LMyKVByxMza0kVSnI+TxPxnyrKj7HlU="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-protocol-test-traits/1.66.0/smithy-protocol-test-traits-1.66.0.pom",
-      "sha256": "jxI2IdBVlfm2XPRK2VUPAgBANPLZ9NACCt/iXWubye4="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-protocol-test-traits/1.69.0/smithy-protocol-test-traits-1.69.0.pom",
+      "sha256": "eAg9jQccZp4fnf6Yi6x1GMC8hNN6oa2VkVFuhuws2oQ="
     },
     {
       "url": "https://repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
@@ -156,52 +156,52 @@
       "sha256": "G4nJFIbwX2H6XcaP9WrkK78GGE1SOmvojQA5F3gPOLI="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-zip/0.11.6/os-zip-0.11.6.jar",
-      "sha256": "w75iXFxZ1ZVLXcw6AKYA8J7y+iOHcama82GFj3CqdO0="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-zip/0.11.8/os-zip-0.11.8.jar",
+      "sha256": "OSMvZwBBFggOB/Buvfj1K7JZ84usftozikueMbCjFJk="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-zip/0.11.6/os-zip-0.11.6.pom",
-      "sha256": "tT2sDpZsGQPGs5BOHP98TaaP3/AUK3vYEhd/sNzseZw="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/os-zip/0.11.8/os-zip-0.11.8.pom",
+      "sha256": "KCYiF2VBbn2vjUXADP6OBJiN91sKR/v4OsGPArtN9dA="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/ujson_3/4.4.2/ujson_3-4.4.2.jar",
-      "sha256": "S9YJoduEHrtlhBG9wtdGIgT+hrRob/6Tt2e1EYErbAE="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/ujson_3/4.4.3/ujson_3-4.4.3.jar",
+      "sha256": "L9gIOqvH+0JSwpmQmxmyiBMmoDUC66iFnTnUss63qLI="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/ujson_3/4.4.2/ujson_3-4.4.2.pom",
-      "sha256": "qx2OCLpgBi4gXkQubZ9lkCuH8u9YSYYz6uH5oR+VxUk="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/ujson_3/4.4.3/ujson_3-4.4.3.pom",
+      "sha256": "46oiANHD3ANE/A+cbdjRcX4xCKyjhg87JIfubA4w9Xg="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upack_3/4.4.2/upack_3-4.4.2.jar",
-      "sha256": "viOj6aE03c0njpdWXkXyaXMHUya8rFzykuknG9jv5ow="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upack_3/4.4.3/upack_3-4.4.3.jar",
+      "sha256": "QLxTHwQ4j/GZMHjv+3P6YBq48Tj0VjnOkixlLLRZQmg="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upack_3/4.4.2/upack_3-4.4.2.pom",
-      "sha256": "DxN5lkJF2Q9LfIfquxlfntd0ABMIszJkXbA6qNYIxAQ="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upack_3/4.4.3/upack_3-4.4.3.pom",
+      "sha256": "zQRJ1+PXpmWzRU190d5YuH15/69FjAv4Nisrxce30Co="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/4.4.2/upickle-implicits_3-4.4.2.jar",
-      "sha256": "HYEWAoNR8nH/qqlx97ARTKNbfx52qZ6YxgpKjH+Fjgs="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/4.4.3/upickle-implicits_3-4.4.3.jar",
+      "sha256": "O96Xt9WI9C6AdCSBYOZKgWImxwv7NS7B2DSs+gocc60="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/4.4.2/upickle-implicits_3-4.4.2.pom",
-      "sha256": "EV0SjGFcijNgOPxGqFxFJgUMKoNqQSyTjZaqfc63UPQ="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/4.4.3/upickle-implicits_3-4.4.3.pom",
+      "sha256": "LFH8TxnNQ8KSVbu2IaR1x2GVGBf/Wo7KI8nNTvX33jg="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/cassowary_3/0.0.7/cassowary_3-0.0.7.jar",
-      "sha256": "Q9YDZHIiq3cqieDKagvGPu0tjW1VH+rMJ/GeQEXKV04="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/cassowary_3/0.0.10/cassowary_3-0.0.10.jar",
+      "sha256": "DfMF8oPHExmogmbMixvqTuKSxwezJoOzTyQFm+ud4ec="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/cassowary_3/0.0.7/cassowary_3-0.0.7.pom",
-      "sha256": "aUW0TIuWZ9DBuDA1m5lbknCxyFjligwXTd4df/2VOLI="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/cassowary_3/0.0.10/cassowary_3-0.0.10.pom",
+      "sha256": "rIlTbGOtukvOP48cxfA0sKoKMoByoNV7DNE2qX3kYqw="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/crossterm/0.0.7/crossterm-0.0.7.jar",
-      "sha256": "KPuZYV4pEDt9NbqwATXspyFv7t8ETSylIFiyJDDSAfQ="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/crossterm/0.0.10/crossterm-0.0.10.jar",
+      "sha256": "XKrmziFGatTwbwn8FMiTGINWU0ybnPkGO8KeXGlBCjI="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/olvind/tui/crossterm/0.0.7/crossterm-0.0.7.pom",
-      "sha256": "3L8/qw9MUWZ6xM/rhxmceib7LQc4aCITsyCDZ2W6JYo="
+      "url": "https://repo1.maven.org/maven2/com/olvind/tui/crossterm/0.0.10/crossterm-0.0.10.pom",
+      "sha256": "TC6UNWJyL/winShMymMKN9C5MBgNAxnd0ERYcq1jfxo="
     },
     {
       "url": "https://repo1.maven.org/maven2/com/softwaremill/jox/channels/1.1.1/channels-1.1.1.jar",
@@ -228,20 +228,20 @@
       "sha256": "uziNN/vN083mTDzt4hg4aTIY3EUfBAQMXfNgp47X6BI="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-utils/1.66.0/smithy-utils-1.66.0.jar",
-      "sha256": "tQ91hFZPUn6fJai+2IDZIa4JsR6LXEpMr7L06pXuMJI="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-utils/1.69.0/smithy-utils-1.69.0.jar",
+      "sha256": "k9Wp+Bu8nxshdFXWc4EeFE0D97e5EYsgB+HLBtElyXQ="
     },
     {
-      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-utils/1.66.0/smithy-utils-1.66.0.pom",
-      "sha256": "93/laMzjELkgKbLMTTG1espdfQun255gpmdFuN3+DcQ="
+      "url": "https://repo1.maven.org/maven2/software/amazon/smithy/smithy-utils/1.69.0/smithy-utils-1.69.0.pom",
+      "sha256": "yaB09T5G/IC8kZwEq4Dbp/DumgG0QaNC/c38Wcrmd0w="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/4.4.2/upickle-core_3-4.4.2.jar",
-      "sha256": "QP898AGQbOL3vox0ijK4+9sQPmCqyaJHCgwVX6kkvIY="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/4.4.3/upickle-core_3-4.4.3.jar",
+      "sha256": "m5vktnerb7xrgv5UhpCKOWZPUek0TRkDraHGdm0lHOI="
     },
     {
-      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/4.4.2/upickle-core_3-4.4.2.pom",
-      "sha256": "m2jno+nDbmUZBZfpSYxWuUziSHRrrf/zMEW7zmtAgB8="
+      "url": "https://repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/4.4.3/upickle-core_3-4.4.3.pom",
+      "sha256": "9ufT6a7XMqQC2cbUEquNjS6UHfHG0WYV4AwjeOagGzg="
     }
   ]
 }
