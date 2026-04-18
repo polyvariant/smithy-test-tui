@@ -1,7 +1,6 @@
 {
-  "version": 2,
+  "version": 4,
   "scalaVersion": "3.8.1",
-  "mainClass": "app",
   "exportHash": "378df030bbaed74e269a0d8bf454c41ce68914f7",
   "sources": [
     "finder.scala",
