@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-    scala-cli-nix.url = "github:scala-nix/scala-cli-nix/native-support";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    scala-cli-nix.url = "github:scala-nix/scala-cli-nix";
     scala-cli-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 

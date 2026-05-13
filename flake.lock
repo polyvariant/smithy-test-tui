@@ -2,15 +2,16 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1778032093,
-        "narHash": "sha256-fZ7hSQsu8W0iXC3KDy1VIiPApgisroto6RKl7HMRRAE=",
+        "lastModified": 1778672786,
+        "narHash": "sha256-Blg88K1jwG+P0Mr27+rKMFCufdrWkV3wWh9AdYtz0FQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "836768073cdf92f4a2542b87b4d7e9a52b701ffe",
+        "rev": "eef00dfd8a712b34af845f9350bac681b1228bd1",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -28,16 +29,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1778071064,
-        "narHash": "sha256-y2YeykZyCWRcxSMv0lIfjuwLuseZNEDeuEQdIBttMTM=",
+        "lastModified": 1778714111,
+        "narHash": "sha256-5F+zTIXM7mTlnSvvYTdDHgz3TcARtiylZXJCzasRrys=",
         "owner": "scala-nix",
         "repo": "scala-cli-nix",
-        "rev": "39a2a3c18b555a83f1a05142b324f14202e9e16c",
+        "rev": "fe17de7683c4bbfa48d55688c301e32d0f384952",
         "type": "github"
       },
       "original": {
         "owner": "scala-nix",
-        "ref": "native-support",
         "repo": "scala-cli-nix",
         "type": "github"
       }
